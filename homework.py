@@ -94,11 +94,12 @@ class Running(Training):
         spent_calories = (
             (self.coeff_calorie_1
              * self.get_mean_speed()
-             - self.coeff_calorie_2)
-             * self.weight
-             / self.M_IN_KM
-             * self.duration
-             * self.MIN_IN_H
+             - self.coeff_calorie_2
+             )
+            * self.weight
+            / self.M_IN_KM
+            * self.duration
+            * self.MIN_IN_H
         )
         return spent_calories
 
@@ -125,9 +126,11 @@ class SportsWalking(Training):
             (self.coeff_calorie_1
              * self.weight
              + (self.get_mean_speed() ** 2
-             // self.height)
+              // self.height
+             )
              * self.coeff_calorie_2
-             * self.weight)
+             * self.weight
+             )
              * self.duration
              * self.MIN_IN_H
         )
@@ -167,7 +170,8 @@ class Swimming(Training):
         """Получить количество затраченных калорий."""
         spent_calories = (
             (self.get_mean_speed()
-             + self.coeff_calorie_1)
+             + self.coeff_calorie_1
+             )
              * self.coeff_calorie_2
              * self.weight
         )
@@ -204,4 +208,3 @@ if __name__ == '__main__':
     for workout_type, data in packages:
         training = read_package(workout_type, data)
         main(training)
-        
